@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APP TREINO - Acompanhamento de Musculação</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">💪 APP TREINO</h1>
+            <nav class="nav-tabs">
+                <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+                <button class="tab-btn" data-tab="treino">Treino</button>
+                <button class="tab-btn" data-tab="historico">Histórico</button>
+            </nav>
+        </header>
+
+        <!-- Dashboard Tab -->
+        <section id="dashboard" class="tab-content active">
+            <div class="dashboard-grid">
+                <!-- Card: Data Inicial -->
+                <div class="card">
+                    <h2 class="card-title">Data Inicial do Treino</h2>
+                    <div class="date-input-group">
+                        <input type="date" id="dataInicial" class="date-input">
+                        <button id="salvarDataInicial" class="btn-primary">Salvar</button>
+                    </div>
+                    <div id="dataInicialExibida" class="date-display"></div>
+                </div>
+
+                <!-- Card: Contador de Dias -->
+                <div class="card highlight-card">
+                    <h2 class="card-title">Progresso</h2>
+                    <div class="counter-display">
+                        <span id="diasDecorridos" class="counter-number">0</span>
+                        <span class="counter-label">dias de treino</span>
+                    </div>
+                </div>
+
+                <!-- Card: Treino do Dia -->
+                <div class="card">
+                    <h2 class="card-title">Treino do Dia</h2>
+                    <div class="treino-selector">
+                        <button class="treino-btn" data-treino="A">Treino A</button>
+                        <button class="treino-btn" data-treino="B">Treino B</button>
+                        <button class="treino-btn" data-treino="C">Treino C</button>
+                        <button class="treino-btn" data-treino="D">Treino D</button>
+                    </div>
+                    <div id="treinoAtual" class="treino-atual">
+                        <span class="treino-badge" id="treinoBadge">Selecione um treino</span>
+                    </div>
+                    <div id="ultimoTreino" class="ultimo-treino"></div>
+                </div>
+
+                <!-- Card: Botão Treino Concluído -->
+                <div class="card action-card">
+                    <button id="treinoConcluidoBtn" class="btn-concluir" disabled>
+                        <span class="btn-icon">✓</span>
+                        Treino Concluído
+                    </button>
+                    <p class="btn-hint" id="btnHint">Complete todos os exercícios para concluir</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Treino Tab -->
+        <section id="treino" class="tab-content">
+            <div class="treino-header">
+                <h2 id="treinoNomeHeader" class="treino-header-title">Treino A</h2>
+                <div class="progress-bar-container">
+                    <div id="progressBar" class="progress-bar"></div>
+                    <span id="progressText" class="progress-text">0%</span>
+                </div>
+            </div>
+            <div id="exerciciosList" class="exercicios-list">
+                <!-- Exercícios serão inseridos dinamicamente -->
+            </div>
+        </section>
+
+        <!-- Histórico Tab -->
+        <section id="historico" class="tab-content">
+            <div class="historico-container">
+                <!-- Calendário Semanal -->
+                <div class="card">
+                    <h2 class="card-title">Consistência Semanal</h2>
+                    <div id="calendarioSemanal" class="calendario-semanal">
+                        <!-- Dias da semana serão inseridos dinamicamente -->
+                    </div>
+                </div>
+
+                <!-- Calendário Mensal -->
+                <div class="card">
+                    <h2 class="card-title">Consistência Mensal</h2>
+                    <div class="calendario-header">
+                        <button id="mesAnterior" class="btn-nav">←</button>
+                        <h3 id="mesAtual" class="mes-titulo"></h3>
+                        <button id="mesProximo" class="btn-nav">→</button>
+                    </div>
+                    <div id="calendarioMensal" class="calendario-mensal">
+                        <!-- Calendário será inserido dinamicamente -->
+                    </div>
+                    <div class="legenda">
+                        <div class="legenda-item">
+                            <span class="legenda-verde"></span>
+                            <span>Treino realizado</span>
+                        </div>
+                        <div class="legenda-item">
+                            <span class="legenda-vermelho"></span>
+                            <span>Sem treino</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estatísticas -->
+                <div class="card">
+                    <h2 class="card-title">Estatísticas</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value" id="treinosMes">0</div>
+                            <div class="stat-label">Treinos este mês</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="consistenciaSemana">0%</div>
+                            <div class="stat-label">Consistência semanal</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="sequenciaAtual">0</div>
+                            <div class="stat-label">Sequência atual</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
